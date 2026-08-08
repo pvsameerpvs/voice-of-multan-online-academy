@@ -3,7 +3,7 @@
 import * as React from "react";
 import Link from "next/link";
 import { AnimatePresence, motion } from "framer-motion";
-import { PhoneCall } from "lucide-react";
+import { WhatsAppIcon } from "@/components/shared/social-icons";
 import { whatsappLink } from "@/lib/site";
 
 export function StickyMobileCTA() {
@@ -32,7 +32,7 @@ export function StickyMobileCTA() {
               rel="noopener noreferrer"
               className="flex h-11 flex-1 items-center justify-center gap-2 rounded-xl bg-green-500 text-sm font-semibold text-white"
             >
-              <PhoneCall className="h-4 w-4" />
+              <WhatsAppIcon className="h-4 w-4" />
               WhatsApp
             </a>
             <Link

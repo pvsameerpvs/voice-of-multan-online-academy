@@ -3,7 +3,6 @@ import {
   MapPin,
   Phone,
   Mail,
-  MessageCircle,
   Sparkles,
   Clock3,
 } from "lucide-react";
@@ -12,6 +11,7 @@ import {
   InstagramIcon,
   YoutubeIcon,
   LinkedinIcon,
+  WhatsAppIcon,
 } from "@/components/shared/social-icons";
 import { PageHero } from "@/components/shared/page-hero";
 import { SectionHeading } from "@/components/shared/section-heading";
@@ -52,7 +52,7 @@ const contactCards = [
     href: `mailto:${siteConfig.contactEmail}`,
   },
   {
-    icon: MessageCircle,
+    icon: WhatsAppIcon,
     title: "WhatsApp",
     lines: ["Live chat · replies in minutes"],
     href: whatsappLink(),
