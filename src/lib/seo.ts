@@ -74,7 +74,7 @@ const businessSchema = {
   email: siteConfig.contactEmail,
   telephone: siteConfig.phone,
   description: siteConfig.description,
-  logo: `${siteConfig.url}/logo.png`,
+  logo: `${siteConfig.url}/logo-main.png`,
   address: {
     "@type": "PostalAddress",
     streetAddress: siteConfig.address.street,

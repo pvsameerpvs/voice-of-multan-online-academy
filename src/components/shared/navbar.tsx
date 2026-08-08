@@ -39,7 +39,7 @@ export function Navbar() {
     <header className="fixed inset-x-0 top-0 z-50 px-4 pt-4 sm:px-6">
       <div
         className={cn(
-          "mx-auto flex h-16 max-w-6xl items-center justify-between gap-6 rounded-2xl border px-4 pl-5 transition-all duration-500 sm:px-5",
+          "flex h-24 w-full items-center justify-between gap-6 rounded-lg border px-5 transition-all duration-500 sm:h-28 sm:px-8",
           scrolled
             ? "border-slate-200/70 bg-white/85 shadow-[0_12px_40px_rgba(15,23,42,0.08)] backdrop-blur-xl"
             : "border-transparent bg-transparent",
@@ -90,7 +90,7 @@ export function Navbar() {
               <SheetContent>
                 <SheetHeader>
                   <SheetTitle>
-                    <Logo />
+<Logo className="z-10 scale-[1.3] md:scale-[1.25]" />
                   </SheetTitle>
                 </SheetHeader>
                 <nav className="flex flex-col gap-1">

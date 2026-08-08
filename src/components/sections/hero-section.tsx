@@ -4,7 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import * as React from "react";
 import { AnimatePresence, motion, type Variants } from "framer-motion";
-import { ArrowRight, ChevronLeft, ChevronRight, PlayCircle, Star } from "lucide-react";
+import { ArrowRight, ChevronLeft, ChevronRight } from "lucide-react";
 import { MagneticButton } from "@/components/animations/magnetic-button";
 import { cn } from "@/lib/utils";
 
@@ -13,12 +13,63 @@ const EASE = [0.21, 0.47, 0.32, 0.98] as const;
 const slides = [
   {
     image: "/cover1.jpg",
+    eyebrow: "Admissions Open — 2026",
     alt: "Voice of Multan Online Academy — students learning online",
     title: "Smart Digital Learning for Every Student",
     description: "Nursery to Grade 10 tuition with certified educators — online, personal, affordable.",
   },
   {
+    image: "/cover2.jpg",
+    eyebrow: "Live 1-on-1 Classes",
+    alt: "Voice of Multan Online Academy — live online classes",
+    title: "Live 1-on-One Classes, Real Progress",
+    description: "Personal attention in every lesson, with weekly progress reports for parents.",
+  },
+  {
+    image: "/cover3.jpg",
+    eyebrow: "Certified Educators",
+    alt: "Voice of Multan Online Academy — certified teachers",
+    title: "Learn From Certified Educators",
+    description: "Experienced, certified teachers who make every lesson engaging and clear.",
+  },
+  {
+    image: "/cover4.jpg",
+    eyebrow: "Mathematics Specialist",
+    alt: "Voice of Multan Online Academy — maths programs",
+    title: "Master Mathematics with Confidence",
+    description: "Specialist maths programs from early years to Grade 10.",
+  },
+  {
+    image: "/cover5.jpg",
+    eyebrow: "Computer Science",
+    alt: "Voice of Multan Online Academy — computer science programs",
+    title: "Computer Science for the Future",
+    description: "Coding and computing skills for every age and level.",
+  },
+  {
+    image: "/cover6.jpg",
+    eyebrow: "Digital Marketing",
+    alt: "Voice of Multan Online Academy — digital marketing programs",
+    title: "Digital Marketing & Career Skills",
+    description: "Professional digital skills with verified certificates.",
+  },
+  {
+    image: "/cover7.jpg",
+    eyebrow: "Trusted by Families",
+    alt: "Voice of Multan Online Academy — happy students",
+    title: "Loved by Students & Parents",
+    description: "A personal learning experience trusted by 500+ students.",
+  },
+  {
+    image: "/cover8.jpg",
+    eyebrow: "Learn Anywhere",
+    alt: "Voice of Multan Online Academy — modern learning environment",
+    title: "A Modern Way to Learn",
+    description: "Flexible online learning that fits your family's schedule.",
+  },
+  {
     image: "/cover9.jpg",
+    eyebrow: "Specialty Programs",
     alt: "Voice of Multan Online Academy — premium digital programs",
     title: "Master Mathematics & Digital Skills",
     description: "Specialist Mathematics, Computer Science and Digital Marketing programs with 1-on-1 mentorship.",
@@ -103,7 +154,7 @@ export function HeroSection() {
           >
             <motion.div variants={itemVariants} className="mb-6 inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-3.5 py-1.5 text-xs font-semibold text-white backdrop-blur-md">
               <span className="h-1.5 w-1.5 rounded-full bg-accent" />
-              {active === 0 ? "Admissions Open — 2026" : "Specialty Programs"}
+              {slide.eyebrow}
             </motion.div>
 
             <motion.h1
@@ -127,12 +178,6 @@ export function HeroSection() {
                   <ArrowRight className="h-4 w-4" />
                 </Link>
               </MagneticButton>
-              
-            </motion.div>
-
-            <motion.div variants={itemVariants} className="mt-9 flex items-center gap-2 text-sm text-white/80">
-              
-        
             </motion.div>
           </motion.div>
         </AnimatePresence>
