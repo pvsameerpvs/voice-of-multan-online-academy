@@ -33,7 +33,7 @@ export const courses: Course[] = [
     ],
     popular: false,
     gradient: "from-pink-500/15 to-rose-400/5",
-    image: "/courses/nursery.svg",
+    image: "https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?q=80&w=1200&h=800&fit=crop&auto=format",
   },
   {
     id: "kg1",
@@ -58,7 +58,7 @@ export const courses: Course[] = [
     ],
     popular: false,
     gradient: "from-amber-400/15 to-yellow-300/5",
-    image: "/courses/kg.svg",
+    image: "https://images.unsplash.com/photo-1544717297-fa95b6ee9643?q=80&w=1200&h=800&fit=crop&auto=format",
   },
   {
     id: "kg2",
@@ -83,7 +83,7 @@ export const courses: Course[] = [
     ],
     popular: false,
     gradient: "from-emerald-400/15 to-green-300/5",
-    image: "/courses/kg2.svg",
+    image: "https://images.unsplash.com/photo-1497633762265-9d179a990aa6?q=80&w=1200&h=800&fit=crop&auto=format",
   },
   {
     id: "grade1-10",
@@ -108,7 +108,7 @@ export const courses: Course[] = [
     ],
     popular: true,
     gradient: "from-blue-400/15 to-sky-300/5",
-    image: "/courses/tuition.svg",
+    image: "https://images.unsplash.com/photo-1509062522246-3755977927d7?q=80&w=1200&h=800&fit=crop&auto=format",
   },
   {
     id: "mathematics",
@@ -133,7 +133,7 @@ export const courses: Course[] = [
     ],
     popular: true,
     gradient: "from-violet-500/15 to-purple-300/5",
-    image: "/courses/math.svg",
+    image: "https://images.unsplash.com/photo-1509228468518-180dd4864904?q=80&w=1200&h=800&fit=crop&auto=format",
   },
   {
     id: "computer-science",
@@ -158,7 +158,7 @@ export const courses: Course[] = [
     ],
     popular: true,
     gradient: "from-cyan-400/15 to-sky-300/5",
-    image: "/courses/cs.svg",
+    image: "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?q=80&w=1200&h=800&fit=crop&auto=format",
   },
   {
     id: "digital-marketing",
@@ -183,7 +183,7 @@ export const courses: Course[] = [
     ],
     popular: true,
     gradient: "from-rose-400/15 to-orange-300/5",
-    image: "/courses/marketing.svg",
+    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=1200&h=800&fit=crop&auto=format",
   },
 ];
 
