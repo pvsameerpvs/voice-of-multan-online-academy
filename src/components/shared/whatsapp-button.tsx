@@ -30,7 +30,7 @@ export function WhatsAppButton() {
             transition={{ type: "spring", stiffness: 260, damping: 20 }}
             onClick={() => setOpen(true)}
             aria-label="WhatsApp enquiry"
-            className="fixed bottom-24 left-4 z-40 flex h-14 w-14 items-center justify-center rounded-full bg-gradient-to-br from-emerald-400 to-green-600 text-white shadow-[0_10px_30px_rgba(16,185,129,0.45)] transition-transform hover:scale-110 lg:bottom-5 lg:left-5 lg:z-50"
+            className="fixed bottom-24 left-4 z-40 hidden h-14 w-14 items-center justify-center rounded-full bg-gradient-to-br from-emerald-400 to-green-600 text-white shadow-[0_10px_30px_rgba(16,185,129,0.45)] transition-transform hover:scale-110 lg:flex lg:bottom-5 lg:left-5 lg:z-50"
           >
             <span aria-hidden className="absolute inset-0 rounded-full bg-emerald-400/60 animate-pulse-ring" />
             <WhatsAppIcon className="h-7 w-7" />
