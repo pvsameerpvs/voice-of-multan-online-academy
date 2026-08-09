@@ -1,10 +1,13 @@
 import type { Metadata } from "next";
+import Image from "next/image";
+import Link from "next/link";
 import {
+  ChevronRight,
+  Clock3,
+  Mail,
   MapPin,
   Phone,
-  Mail,
   Sparkles,
-  Clock3,
 } from "lucide-react";
 import {
   FacebookIcon,
@@ -13,11 +16,11 @@ import {
   LinkedinIcon,
   WhatsAppIcon,
 } from "@/components/shared/social-icons";
-import { PageHero } from "@/components/shared/page-hero";
 import { SectionHeading } from "@/components/shared/section-heading";
 import { Reveal } from "@/components/animations/motion";
 import { GradientBackground } from "@/components/animations/gradient-background";
 import { Card, CardContent } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
 import { ContactForm } from "@/components/sections/contact-form";
 import { EnrollmentForm } from "@/components/sections/enrollment-form";
 import { DemoBookingForm } from "@/components/sections/demo-booking-form";
@@ -42,13 +45,13 @@ const contactCards = [
   {
     icon: Phone,
     title: "Call Us",
-    lines: [siteConfig.phone],
+    lines: [siteConfig.phone, "Mon–Sat · 9am–8pm"],
     href: `tel:${siteConfig.phone.replace(/\s/g, "")}`,
   },
   {
     icon: Mail,
     title: "Email Us",
-    lines: [siteConfig.contactEmail],
+    lines: [siteConfig.contactEmail, "Replies within 24 hours"],
     href: `mailto:${siteConfig.contactEmail}`,
   },
   {
@@ -57,6 +60,7 @@ const contactCards = [
     lines: ["Live chat · replies in minutes"],
     href: whatsappLink(),
     external: true,
+    featured: true,
   },
   {
     icon: MapPin,
@@ -83,31 +87,110 @@ export default function ContactPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: faqSchema(faqs) }}
       />
-      <PageHero
-        eyebrow="Contact Us"
-        title="We're Here to"
-        highlight="Help You Succeed"
-        description="Questions, enrolment or a free demo — reach out and our friendly team will respond within hours."
-        crumb="Contact"
-      />
+
+      {/* Image hero */}
+      <section className="relative overflow-hidden pt-36 pb-16 md:pt-44 md:pb-24">
+        <Image
+          src="/cover2.jpg"
+          alt=""
+          fill
+          priority
+          sizes="100vw"
+          quality={90}
+          className="object-cover"
+        />
+        <div
+          aria-hidden
+          className="absolute inset-0 bg-gradient-to-b from-white/95 via-white/80 to-background"
+        />
+        <div className="relative z-10 mx-auto max-w-4xl px-4 text-center sm:px-6 lg:px-8">
+          <nav
+            aria-label="Breadcrumb"
+            className="mb-5 flex items-center justify-center gap-1.5 text-xs font-medium text-muted"
+          >
+            <Link href="/" className="transition-colors hover:text-primary">
+              Home
+            </Link>
+            <ChevronRight className="h-3 w-3" />
+            <span className="text-primary">Contact</span>
+          </nav>
+          <Badge variant="accent" className="mb-5">
+            <Sparkles className="h-3.5 w-3.5" />
+            We reply within hours
+          </Badge>
+          <h1 className="font-display text-4xl font-bold leading-tight tracking-tight text-dark sm:text-5xl lg:text-6xl">
+            We&apos;re Here to{" "}
+            <span className="gradient-text">Help You Succeed</span>
+          </h1>
+          <p className="mx-auto mt-5 max-w-2xl text-base leading-relaxed text-muted sm:text-lg">
+            Questions, enrolment or a free demo — reach out and our friendly
+            team will respond within hours.
+          </p>
+          <a
+            href={whatsappLink(
+              "Hi Voice of Multan Online Academy! I'd like to talk about enrolling.",
+            )}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mt-8 inline-flex h-12 items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-emerald-500 to-green-600 px-6 text-sm font-semibold text-white shadow-[0_10px_30px_rgba(16,185,129,0.45)] transition-transform hover:scale-[1.03]"
+          >
+            <WhatsAppIcon className="h-5 w-5" />
+            Chat on WhatsApp
+            <span className="ml-1 h-1.5 w-1.5 animate-pulse rounded-full bg-white/80" />
+          </a>
+        </div>
+      </section>
 
       {/* Contact cards */}
-      <section className="relative py-8 md:py-16">
-        <div className="mx-auto max-w-7xl px-4 pb-16 sm:px-6 lg:px-8">
+      <section className="relative pb-8 md:pb-12">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {contactCards.map((card) => {
               const inner = (
-                <Card interactive className="h-full p-6">
+                <Card
+                  interactive
+                  className={
+                    card.featured
+                      ? "relative h-full overflow-hidden border-emerald-200 bg-gradient-to-br from-emerald-50 to-white p-6"
+                      : "h-full p-6"
+                  }
+                >
+                  <div
+                    aria-hidden
+                    className={`absolute inset-x-0 top-0 h-1 ${
+                      card.featured
+                        ? "bg-gradient-to-r from-emerald-400 to-green-600"
+                        : "bg-gradient-to-r from-primary to-secondary"
+                    }`}
+                  />
                   <CardContent className="p-0">
-                    <span className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-primary to-secondary text-white shadow-card">
+                    <span
+                      className={
+                        card.featured
+                          ? "mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-emerald-500 to-green-600 text-white shadow-card"
+                          : "mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-primary to-secondary text-white shadow-card"
+                      }
+                    >
                       <card.icon className="h-6 w-6" />
                     </span>
-                    <h3 className="font-display text-lg font-bold text-dark">{card.title}</h3>
+                    <h3 className="font-display text-lg font-bold text-dark">
+                      {card.title}
+                    </h3>
                     {card.lines.map((line) => (
                       <p key={line} className="mt-1 text-sm text-muted">
                         {line}
                       </p>
                     ))}
+                    <p
+                      className={
+                        card.featured
+                          ? "mt-3 inline-flex items-center gap-1.5 rounded-full bg-emerald-500/10 px-3 py-1 text-xs font-semibold text-emerald-700"
+                          : "mt-3 hidden"
+                      }
+                    >
+                      <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-emerald-500" />
+                      Chat now
+                    </p>
                   </CardContent>
                 </Card>
               );
@@ -231,6 +314,25 @@ export default function ContactPage() {
                   </AccordionItem>
                 ))}
               </Accordion>
+              <div className="mt-8 rounded-2xl border border-emerald-100 bg-emerald-50/60 p-5">
+                <p className="flex items-center gap-2 text-sm font-bold text-emerald-800">
+                  <WhatsAppIcon className="h-4 w-4" />
+                  Prefer chat? We&apos;re online now.
+                </p>
+                <p className="mt-1 text-sm text-emerald-700/80">
+                  Skip the form and message us directly — our team usually
+                  replies within minutes.
+                </p>
+                <a
+                  href={whatsappLink()}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mt-4 inline-flex h-10 items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-emerald-500 to-green-600 px-5 text-sm font-semibold text-white shadow-[0_8px_24px_rgba(16,185,129,0.4)] transition-transform hover:scale-[1.02]"
+                >
+                  <WhatsAppIcon className="h-4 w-4" />
+                  Start WhatsApp Chat
+                </a>
+              </div>
             </div>
           </div>
         </div>
