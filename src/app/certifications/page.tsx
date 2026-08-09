@@ -1,16 +1,15 @@
 import type { Metadata } from "next";
-import { Award, CheckCircle2, Search, ShieldCheck } from "lucide-react";
-import Link from "next/link";
+import { Award, CheckCircle2, ShieldCheck } from "lucide-react";
 import { PageHero } from "@/components/shared/page-hero";
 import { SectionHeading } from "@/components/shared/section-heading";
 import { CTABand } from "@/components/shared/cta-band";
 import { Reveal, StaggerGroup, StaggerItem } from "@/components/animations/motion";
 import { GradientBackground } from "@/components/animations/gradient-background";
-import { MagneticButton } from "@/components/animations/magnetic-button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge as BadgeChip } from "@/components/ui/badge";
-import { Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/button";
+import { WhatsAppIcon } from "@/components/shared/social-icons";
+import { CertificateVerifier } from "@/components/sections/certificate-verifier";
+import { whatsappLink } from "@/lib/site";
 import { generateMetadata as genMeta, reviewSchema } from "@/lib/seo";
 import { certificates, certificateVerificationSteps } from "@/data/certificates";
 
@@ -20,6 +19,18 @@ export const metadata: Metadata = genMeta({
     "Explore professional certificates, course-completion credentials and student achievements at Voice of Multan Online Academy — with a secure verification system.",
   path: "/certifications",
 });
+
+const stepGradients = [
+  "from-primary to-secondary",
+  "from-accent to-accent-dark",
+  "from-emerald-400 to-teal-500",
+];
+
+const verificationPerks = [
+  "Uniquely numbered, tamper-resistant credentials",
+  "Shareable directly on LinkedIn or your CV",
+  "Instant authenticity check via WhatsApp — no login required",
+];
 
 export default function CertificationsPage() {
   return (
@@ -39,18 +50,22 @@ export default function CertificationsPage() {
       {/* Certificates grid */}
       <section className="relative py-8 md:py-16">
         <div className="mx-auto max-w-7xl px-4 pb-16 sm:px-6 lg:px-8">
-          <div className="mb-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+          <StaggerGroup className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
             {certificates.map((cert) => (
-              <Reveal key={cert.id} delay={0.05}>
+              <StaggerItem key={cert.id}>
                 <Card
                   interactive
-                  className="relative h-full overflow-hidden p-7"
+                  className="group relative flex h-full flex-col overflow-hidden p-7"
                 >
                   <div
                     aria-hidden
-                    className={`absolute inset-x-0 top-0 h-1.5 bg-gradient-to-r ${cert.gradient}`}
+                    className={`absolute inset-x-0 top-0 h-1.5 bg-gradient-to-r ${cert.gradient} transition-all duration-500 group-hover:h-2`}
                   />
-                  <CardContent className="relative p-0">
+                  <div
+                    aria-hidden
+                    className="absolute -right-12 -top-12 h-32 w-32 rounded-full bg-secondary/10 blur-2xl transition-colors duration-500 group-hover:bg-secondary/20"
+                  />
+                  <CardContent className="relative flex flex-1 flex-col p-0">
                     <div className="mb-5 flex items-center justify-between">
                       <span
                         className={`flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br text-white shadow-card ${cert.gradient}`}
@@ -81,11 +96,22 @@ export default function CertificationsPage() {
                         </li>
                       ))}
                     </ul>
+                    <a
+                      href={whatsappLink(
+                        `Hi Voice of Multan Online Academy! I'm interested in the ${cert.title} certificate (${cert.category}). Please share the details.`,
+                      )}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="mt-6 flex h-11 items-center justify-center gap-2 rounded-xl border border-emerald-500/30 bg-emerald-500/10 text-sm font-semibold text-emerald-700 transition-all duration-300 hover:bg-gradient-to-r hover:from-emerald-500 hover:to-green-600 hover:text-white hover:shadow-[0_10px_24px_rgba(16,185,129,0.4)]"
+                    >
+                      <WhatsAppIcon className="h-4 w-4" />
+                      Enquire on WhatsApp
+                    </a>
                   </CardContent>
                 </Card>
-              </Reveal>
+              </StaggerItem>
             ))}
-          </div>
+          </StaggerGroup>
         </div>
       </section>
 
@@ -99,18 +125,21 @@ export default function CertificationsPage() {
             highlight="Certificate"
             description="From classroom to credential — earn a certificate that's verifiable anywhere."
           />
-          <StaggerGroup className="grid gap-6 md:grid-cols-3">
-            {certificateVerificationSteps.map((step) => (
+          <StaggerGroup className="relative grid gap-6 md:grid-cols-3">
+            <div
+              aria-hidden
+              className="absolute left-[16%] right-[16%] top-14 hidden border-t-2 border-dashed border-secondary/30 md:block"
+            />
+            {certificateVerificationSteps.map((step, i) => (
               <StaggerItem key={step.step}>
-                <Card
-                  interactive
-                  className="relative h-full overflow-hidden p-7"
-                >
+                <Card interactive className="relative h-full overflow-hidden p-7 text-center">
                   <CardContent className="relative p-0">
-                    <span className="font-display text-4xl font-bold gradient-text">
+                    <span
+                      className={`mx-auto flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br font-display text-lg font-bold text-white shadow-card ${stepGradients[i]}`}
+                    >
                       {step.step}
                     </span>
-                    <h3 className="mt-3 font-display text-lg font-bold text-dark">
+                    <h3 className="mt-4 font-display text-lg font-bold text-dark">
                       {step.title}
                     </h3>
                     <p className="mt-2 text-sm leading-relaxed text-muted">
@@ -139,16 +168,15 @@ export default function CertificationsPage() {
               </h2>
               <p className="mt-4 max-w-md text-base leading-relaxed text-muted">
                 Employers, universities and clients can confirm the authenticity
-                of any Voice of Multan certificate simply by entering its unique
-                number below.
+                of any Voice of Multan certificate simply by sending its unique
+                number on WhatsApp — no forms, no login.
               </p>
               <ul className="mt-6 space-y-3">
-                {[
-                  "Uniquely numbered, tamper-resistant credentials",
-                  "Shareable directly on LinkedIn or your CV",
-                  "Instant authenticity check — no login required",
-                ].map((item) => (
-                  <li key={item} className="flex items-start gap-2.5 text-sm text-ink">
+                {verificationPerks.map((item) => (
+                  <li
+                    key={item}
+                    className="flex items-start gap-2.5 text-sm text-ink"
+                  >
                     <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-emerald-500" />
                     {item}
                   </li>
@@ -157,38 +185,7 @@ export default function CertificationsPage() {
             </div>
 
             <Reveal>
-              <div className="glass relative overflow-hidden rounded-[2rem] p-8 shadow-card-hover sm:p-10">
-                <div className="mb-6 flex items-center gap-3">
-                  <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-gradient-to-br from-primary to-secondary text-white">
-                    <Search className="h-5 w-5" />
-                  </span>
-                  <div>
-                    <p className="font-display text-base font-bold text-dark">Certificate Checker</p>
-                    <p className="text-xs text-muted">Demo — email our team for official verification</p>
-                  </div>
-                </div>
-                <form className="flex gap-2.5">
-                  <Input
-                    aria-label="Certificate number"
-                    placeholder="e.g. VOMA-2026-0128"
-                    className="bg-white"
-                  />
-                  <Button type="submit" variant="secondary">
-                    Verify
-                  </Button>
-                </form>
-                <p className="mt-4 flex items-center gap-2 text-xs text-muted">
-                  Our team confirms verification requests via email or WhatsApp within one working day.
-                </p>
-                <div className="mt-6 flex flex-wrap gap-3">
-                  <MagneticButton asChild>
-                    <Link href="/contact">Request a Verification</Link>
-                  </MagneticButton>
-                  <MagneticButton variant="outline" asChild>
-                    <Link href="/contact#enroll">Get Certified</Link>
-                  </MagneticButton>
-                </div>
-              </div>
+              <CertificateVerifier />
             </Reveal>
           </div>
         </div>
