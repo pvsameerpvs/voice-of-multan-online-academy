@@ -6,7 +6,6 @@ import { WhyChooseUsSection } from "@/components/sections/why-choose-us-section"
 import { AILearningSection } from "@/components/sections/ai-learning-section";
 import { TestimonialsSection } from "@/components/sections/testimonials-section";
 import { CertificateShowcase } from "@/components/sections/certificate-showcase";
-import { CTABand } from "@/components/shared/cta-band";
 import { generateMetadata as genMeta } from "@/lib/seo";
 import { courses } from "@/data/courses";
 import { absoluteUrl, siteConfig } from "@/lib/site";
@@ -72,7 +71,6 @@ export default function Home() {
       <AILearningSection />
       <CertificateShowcase />
       <TestimonialsSection />
-      {/* <CTABand /> */}
     </>
   );
 }
