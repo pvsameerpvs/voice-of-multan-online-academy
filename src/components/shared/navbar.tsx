@@ -27,6 +27,7 @@ const links = [
 export function Navbar() {
   const [scrolled, setScrolled] = React.useState(false);
   const pathname = usePathname();
+  const isHome = pathname === "/";
 
   React.useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 16);
@@ -57,10 +58,10 @@ export function Navbar() {
                 className={cn(
                   "rounded-full px-4 py-2 text-sm font-semibold transition-colors",
                   isActive
-                    ? scrolled
+                    ? scrolled || !isHome
                       ? "text-primary"
                       : "text-white"
-                    : scrolled
+                    : scrolled || !isHome
                       ? "text-ink hover:text-primary"
                       : "text-white/85 hover:text-white",
                 )}
@@ -82,7 +83,7 @@ export function Navbar() {
                   variant="outline"
                   size="icon"
                   aria-label="Open menu"
-                  className={cn(!scrolled && "border-white/30 bg-white/10 text-white backdrop-blur hover:bg-white/20")}
+                  className={cn(!scrolled && isHome && "border-white/30 bg-white/10 text-white backdrop-blur hover:bg-white/20")}
                 >
                   <Menu className="h-5 w-5" />
                 </Button>
