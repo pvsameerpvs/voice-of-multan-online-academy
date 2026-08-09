@@ -72,7 +72,7 @@ export default function Home() {
       <AILearningSection />
       <CertificateShowcase />
       <TestimonialsSection />
-      <CTABand />
+      {/* <CTABand /> */}
     </>
   );
 }
