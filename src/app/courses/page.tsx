@@ -70,7 +70,7 @@ export default function CoursesPage() {
                         Popular
                       </span>
                     )}
-                    <div className="absolute inset-x-4 bottom-4 flex items-center gap-2">
+                    <div className="absolute inset-x-4 bottom-4 flex flex-wrap items-center gap-2">
                       <span className="inline-flex items-center gap-1.5 rounded-full bg-white/15 px-3 py-1.5 text-[11px] font-semibold text-white backdrop-blur-md">
                         <Clock className="h-3.5 w-3.5" />
                         {course.duration}

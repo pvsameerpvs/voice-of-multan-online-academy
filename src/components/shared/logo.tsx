@@ -7,9 +7,11 @@ import { cn } from "@/lib/utils";
 export function Logo({
   className,
   light = false,
+  imgClassName,
 }: {
   className?: string;
   light?: boolean;
+  imgClassName?: string;
 }) {
   return (
     <Link href="/" className={cn("group inline-flex items-center", className)}>
@@ -27,7 +29,11 @@ export function Logo({
           width={438}
           height={303}
           priority
-          className={cn("h-20 w-auto object-contain md:h-24", light && "h-24 md:h-28")}
+          className={cn(
+            "h-20 w-auto object-contain md:h-24",
+            light && "h-24 md:h-28",
+            imgClassName,
+          )}
         />
       </span>
     </Link>

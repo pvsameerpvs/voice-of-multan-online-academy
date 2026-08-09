@@ -37,16 +37,16 @@ export function Navbar() {
   }, []);
 
   return (
-    <header className="fixed inset-x-0 top-0 z-50 px-4 pt-4 sm:px-6">
+    <header className="fixed inset-x-0 top-0 z-50 px-4 pt-3 sm:px-6">
       <div
         className={cn(
-          "flex h-24 w-full items-center justify-between gap-6 rounded-lg border px-5 transition-all duration-500 sm:h-28 sm:px-8",
+          "flex h-16 w-full items-center justify-between gap-3 rounded-lg border px-4 transition-all duration-500 sm:h-24 sm:gap-6 sm:px-8",
           scrolled
             ? "border-slate-200/70 bg-white/85 shadow-[0_12px_40px_rgba(15,23,42,0.08)] backdrop-blur-xl"
             : "border-transparent bg-transparent",
         )}
       >
-        <Logo />
+        <Logo imgClassName="h-12 sm:h-16 md:h-24" />
 
         <nav className="hidden items-center gap-1 lg:flex">
           {links.map((link) => {
