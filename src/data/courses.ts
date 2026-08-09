@@ -58,7 +58,7 @@ export const courses: Course[] = [
     ],
     popular: false,
     gradient: "from-amber-400/15 to-yellow-300/5",
-    image: "https://images.unsplash.com/photo-1544717297-fa95b6ee9643?q=80&w=1200&h=800&fit=crop&auto=format",
+    image: "https://images.unsplash.com/photo-1484820540004-14229fe36ca4?q=80&w=1200&h=800&fit=crop&auto=format",
   },
   {
     id: "kg2",
@@ -83,7 +83,7 @@ export const courses: Course[] = [
     ],
     popular: false,
     gradient: "from-emerald-400/15 to-green-300/5",
-    image: "https://images.unsplash.com/photo-1497633762265-9d179a990aa6?q=80&w=1200&h=800&fit=crop&auto=format",
+    image: "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?q=80&w=1200&h=800&fit=crop&auto=format",
   },
   {
     id: "grade1-10",
